@@ -1,8 +1,10 @@
 from model.entrada import Entrada
+from ext.database_ext import db
+
 
 class EntradaRepository:
-    def __init__(self, session):
-        self.session = session
+    def __init__(self):
+        self.session = db.session
 
     def get_by_id(self, entrada_id):
         # Retorna uma entrada pelo ID.

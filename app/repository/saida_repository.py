@@ -1,8 +1,10 @@
 from model.saida import Saida
+from ext.database_ext import db
+
 
 class SaidaRepository:
-    def __init__(self, session):
-        self.session = session
+    def __init__(self):
+        self.session = db.session
 
     def get_by_id(self, saida_id):
         # Retorna uma saída pelo ID.
