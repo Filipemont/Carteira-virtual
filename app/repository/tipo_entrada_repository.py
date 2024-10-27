@@ -1,8 +1,10 @@
 from model.tipo_entrada import Tipo_Entrada
+from ext.database_ext import db
+
 
 class TipoEntradaRepository:
-    def __init__(self, session):
-        self.session = session
+    def __init__(self):
+        self.session = db.session
 
     def get_by_id(self, tipo_entrada_id):
         # Retorna um tipo de entrada pelo ID.
