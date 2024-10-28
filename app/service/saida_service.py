@@ -19,4 +19,8 @@ class SaidaService:
         saida = self.__repository.get_by_id(id)
         if saida:
             return saida
+    
+    def update(self, id, updated_data):
+        saida_atualizada = self.__repository.update(id, updated_data)
+        return saida_atualizada
         

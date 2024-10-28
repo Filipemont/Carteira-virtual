@@ -29,8 +29,8 @@ class UserRepository:
             return user
         return None
 
-    def insert(self, nome, sobrenome, email, senha, cpf):
-        usuario = User(Nome=nome, Sobrenome=sobrenome, Email=email, Senha=senha, Cpf=cpf)
+    def insert(self, nome, sobrenome, email, senha, cpf, salt):
+        usuario = User(Nome=nome, Sobrenome=sobrenome, Email=email, Senha=senha, CPF=cpf, Salt=salt)
         self.session.add(usuario)
         self.session.commit()
 
