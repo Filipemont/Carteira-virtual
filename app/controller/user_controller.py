@@ -34,8 +34,19 @@ def criar_usuario():
 
 @usuario_blueprint.route('/usuarios/<int:id>', methods=['PUT'])
 def atualizar_usuario(id):
+    usuario = __user_service.findById(id)
+    if not usuario:
+        return jsonify({"erro": "Usuário não encontrado"}), 400
+    dados = request.get_json()
+    if not dados:
+        return jsonify({"erro": "Dados não fornecidos"}), 400
+    __user_service.update(id, dados)
     return f"Usuário com ID: {id} atualizado", 200
 
 @usuario_blueprint.route('/usuarios/<int:id>', methods=['DELETE'])
 def deletar_usuario(id):
+    usuario = __user_service.findById(id)
+    if not usuario:
+        return jsonify({"erro": "Usuário não encontrado"}), 400
+    __user_service.delete(id)
     return f"Usuário com ID: {id} deletado", 204
