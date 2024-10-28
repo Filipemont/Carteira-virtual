@@ -1,7 +1,7 @@
 from ext.database_ext import db
 from flask import Flask  # type: ignore
 import config
-
+from controller.user_controller import usuario_blueprint
 
 def create_app():
     app = Flask(__name__)
@@ -11,7 +11,7 @@ def create_app():
         f"@{config.POSTGRES_HOST}:{config.POSTGRES_PORT}/{config.POSTGRES_DB}"
     )
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+    app.register_blueprint(usuario_blueprint)
     db.init_app(app)
 
     return app
