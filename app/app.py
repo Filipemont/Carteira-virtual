@@ -1,3 +1,4 @@
+
 from ext.database_ext import db
 from flask import Flask  # type: ignore
 import config

@@ -10,5 +10,5 @@ class User(db.Model):
     Email = db.Column(db.String(255), nullable=False, unique=True) 
     Senha = db.Column(db.String(100), nullable=False)  
     CPF = db.Column(db.String(11), nullable=False, unique=True)  
-    Salt = db.Column(db.LargeBinary)  
+    Salt = db.Column(db.LargeBinary, nullable=True)
 

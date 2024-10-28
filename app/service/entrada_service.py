@@ -19,3 +19,7 @@ class EntradaService:
         entrada = self.__repository.get_by_id(id)
         if entrada:
             return entrada
+
+    def update(self, id, updated_data):
+        entrada_atualizada = self.__repository.update(id, updated_data)
+        return entrada_atualizada

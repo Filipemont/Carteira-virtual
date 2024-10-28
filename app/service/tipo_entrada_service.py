@@ -19,3 +19,7 @@ class TipoEntradaService:
         tipo_entrada = self.__repository.get_by_id(id)
         if tipo_entrada:
             return tipo_entrada
+        
+    def update(self, id, updated_data):
+        tipo_entrada_atualizada = self.__repository.update(id, updated_data)
+        return tipo_entrada_atualizada

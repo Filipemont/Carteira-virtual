@@ -19,3 +19,7 @@ class TipoSaidaService:
         tipo_saida = self.__repository.get_by_id(id)
         if tipo_saida:
             return tipo_saida
+
+    def update(self, id, updated_data):
+        tipo_saida_atualizada = self.__repository.update(id, updated_data)
+        return tipo_saida_atualizada
