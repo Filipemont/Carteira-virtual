@@ -42,9 +42,9 @@ class UserRepository:
     #     # Verifica se um usuário existe pelo ID.
     #     return self.session.query(User).filter_by(ID=user_id).count() > 0
 
-    # def find_by_email(self, email):
-    #     # Retorna um usuário pelo email.
-    #     return self.session.query(User).filter_by(Email=email).first()
+    def find_by_email(self, email):
+        # Retorna um usuário pelo email.
+        return self.session.query(User).filter_by(Email=email).first()
 
     # def find_by_cpf(self, cpf):
     #     # Retorna um usuário pelo CPF.

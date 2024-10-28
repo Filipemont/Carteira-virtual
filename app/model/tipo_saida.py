@@ -1,5 +1,4 @@
 from ext.database_ext import db
-from sqlalchemy.orm import relationship
 
 class Tipo_de_Saida(db.Model):  
     __tablename__ = 'Tipo_de_Saida'
@@ -14,4 +13,4 @@ class Tipo_de_Saida(db.Model):
     ID_Usuario = db.Column(db.Integer, db.ForeignKey('register.Usuario.ID'))
     
     
-    usuario = relationship("User", backref="tipos_de_saida") 
+    usuario = db.relationship("User", backref="tipos_de_saida") 

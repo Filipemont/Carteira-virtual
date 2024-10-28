@@ -1,5 +1,4 @@
 from ext.database_ext import db
-from ext.login_manager import login_manager
 from flask import Flask  # type: ignore
 import config
 
@@ -14,7 +13,6 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)
-    login_manager.init_app(app)
 
     return app
 
