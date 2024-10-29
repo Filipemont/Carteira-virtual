@@ -12,3 +12,9 @@ class User(db.Model):
     CPF = db.Column(db.String(11), nullable=False, unique=True)  
     Salt = db.Column(db.LargeBinary, nullable=True)
 
+    def to_dict(self):
+        return {"nome": self.Nome,
+                "sobrenome":self.Sobrenome,
+                "email":self.Email,
+                "cpf":self.CPF}
+

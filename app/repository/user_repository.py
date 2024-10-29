@@ -10,8 +10,9 @@ class UserRepository:
         return self.session.query(User).filter_by(ID=user_id).first()
 
     def get_all(self):
-        return self.session.query(User).all()
-
+        users = self.session.query(User).all()
+        return [user.to_dict() for user in users]
+     
     def delete_by_id(self, user_id):
         user = self.get_by_id(user_id)
         if user:
