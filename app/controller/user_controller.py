@@ -8,7 +8,7 @@ __user_service = UserService()
 def listar_usuarios():
     todos_usuarios = __user_service.find_all()
     if todos_usuarios:   
-        return todos_usuarios
+        return jsonify(todos_usuarios),200
     return jsonify({"erro": "Nenhum usuario em nossa base de dados"}), 404
 
 @usuario_blueprint.route('/usuarios/<int:id>', methods=['GET'])
