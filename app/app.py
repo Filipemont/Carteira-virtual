@@ -3,6 +3,8 @@ from ext.database_ext import db
 from flask import Flask  # type: ignore
 import config
 from controller.user_controller import usuario_blueprint
+from controller.entrada_controller import entrada_blueprint
+
 
 def create_app():
     app = Flask(__name__)
@@ -13,6 +15,7 @@ def create_app():
     )
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.register_blueprint(usuario_blueprint)
+    app.register_blueprint(entrada_blueprint)
     db.init_app(app)
 
     return app

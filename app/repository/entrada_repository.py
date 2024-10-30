@@ -6,8 +6,9 @@ class EntradaRepository:
     def __init__(self):
         self.session = db.session
 
-    def insert(self, descricao, valor, data_entrada, data_registro):
-        entrada = Entrada(Descricao=descricao, Valor=valor, DataEntrada=data_entrada, DataRegistro=data_registro)
+    def insert(self, descricao, valor, data_entrada, data_registro, id_tipo_entrada, id_usuario):
+        entrada = Entrada(Descricao=descricao, Valor=valor, DataEntrada=data_entrada,
+                          DataRegistro=data_registro, ID_Tipo_Entrada=id_tipo_entrada, ID_Usuario=id_usuario)
         self.session.add(entrada)
         self.session.commit()
 
