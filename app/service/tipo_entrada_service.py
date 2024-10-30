@@ -1,13 +1,11 @@
 from repository.tipo_entrada_repository import TipoEntradaRepository
-from datetime import datetime
 
 
 class TipoEntradaService:
     __repository = TipoEntradaRepository()
 
     def save(self, nome, icone):
-        data_criacao = datetime.now()
-        self.__repository.insert(nome, data_criacao, icone)
+        self.__repository.insert(nome, icone)
 
     def find_all(self):
         return self.__repository.get_all()

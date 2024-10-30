@@ -1,5 +1,5 @@
 from service.entrada_service import EntradaService
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify #type: ignore
 
 entrada_blueprint = Blueprint('entrada', __name__)
 __entrada_service = EntradaService()

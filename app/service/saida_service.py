@@ -5,9 +5,9 @@ from datetime import datetime
 class SaidaService:
     __repository = SaidaRepository()
 
-    def save(self, descricao, valor, data_entrada):
+    def save(self, descricao, valor, data_saida, id_tipo_saida, Id_usuario):
         data_registro = datetime.now()
-        self.__repository.insert(descricao, valor, data_entrada, data_registro)
+        self.__repository.insert(descricao, valor, data_saida, id_tipo_saida, Id_usuario, data_registro)
 
     def find_all(self):
         return self.__repository.get_all()

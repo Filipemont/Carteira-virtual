@@ -1,13 +1,11 @@
 from repository.tipo_saida_repository import TipoSaidaRepository
-from datetime import datetime
 
 
 class TipoSaidaService:
     __repository = TipoSaidaRepository()
 
     def save(self, nome, icone):
-        data_criacao = datetime.now()
-        self.__repository.insert(nome, data_criacao, icone)
+        self.__repository.insert(nome, icone)
 
     def find_all(self):
         return self.__repository.get_all()
