@@ -1,5 +1,5 @@
 from service.user_service import UserService
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify #type: ignore
 
 usuario_blueprint = Blueprint('usuario', __name__)
 __user_service = UserService()

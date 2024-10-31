@@ -1,14 +1,12 @@
 from repository.entrada_repository import EntradaRepository
-from datetime import datetime
 
 
 class EntradaService:
     __repository = EntradaRepository()
 
     def save(self, descricao, valor, data_entrada, id_tipo_entrada, id_usuario):
-        data_registro = datetime.now()
         self.__repository.insert(
-            descricao, valor, data_entrada, data_registro, id_tipo_entrada, id_usuario)
+            descricao, valor, data_entrada, id_tipo_entrada, id_usuario)
 
     def find_all(self):
         return self.__repository.get_all()

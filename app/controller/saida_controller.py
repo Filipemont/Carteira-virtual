@@ -14,7 +14,7 @@ def listar_saidas():
 
 
 @saida_blueprint.route('/saidas/<int:id>', methods=['GET'])
-def obter_entrada(id):
+def obter_saida(id):
     saida = __saida_service.findById(id)
     if saida:
         return saida
