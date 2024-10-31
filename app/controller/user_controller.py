@@ -1,11 +1,40 @@
 from service.user_service import UserService
 from flask import Blueprint, request, jsonify #type: ignore
+from flasgger import swag_from #type: ignore
 
 usuario_blueprint = Blueprint('usuario', __name__)
 __user_service = UserService()
 
 
 @usuario_blueprint.route('/usuarios', methods=['GET'])
+@swag_from({
+    'responses': {
+        200: {
+            'description': 'Lista de usuários retornada com sucesso',
+            'schema': {
+                'type': 'array',
+                'items': {
+                    'type': 'object',
+                    'properties': {
+                        'id': {'type': 'integer'},
+                        'nome': {'type': 'string'},
+                        'email': {'type': 'string'},
+                        'cpf': {'type': 'string'},
+                    }
+                }
+            }
+        },
+        404: {
+            'description': 'Nenhum usuário encontrado na base de dados',
+            'schema': {
+                'type': 'object',
+                'properties': {
+                    'erro': {'type': 'string'}
+                }
+            }
+        }
+    }
+})
 def listar_usuarios():
     todos_usuarios = __user_service.find_all()
     if todos_usuarios:
@@ -14,6 +43,30 @@ def listar_usuarios():
 
 
 @usuario_blueprint.route('/usuarios/<int:id>', methods=['GET'])
+@swag_from({
+    'responses': {
+        200: {
+            'description': 'Usuário retornado com sucesso',
+            'schema': {
+                'type': 'object',
+                'properties': {
+                    'id': {'type': 'integer'},
+                    'nome': {'type': 'string'},
+                    'email': {'type': 'string'},
+                }
+            }
+        },
+        400: {
+            'description': 'Usuário não encontrado',
+            'schema': {
+                'type': 'object',
+                'properties': {
+                    'erro': {'type': 'string'}
+                }
+            }
+        }
+    }
+})
 def obter_usuario(id):
     user = __user_service.findById(id)
     if user:
@@ -22,6 +75,47 @@ def obter_usuario(id):
 
 
 @usuario_blueprint.route('/usuarios', methods=['POST'])
+@swag_from({
+    'parameters': [
+        {
+            'name': 'body',
+            'in': 'body',
+            'required': True,
+            'schema': {
+                'type': 'object',
+                'properties': {
+                    'nome': {'type': 'string'},
+                    'sobrenome': {'type': 'string'},
+                    'email': {'type': 'string'},
+                    'senha': {'type': 'string'},
+                    'cpf': {'type': 'string'}
+                }
+            }
+        }
+    ],
+    'responses': {
+        201: {
+            'description': 'Usuário criado com sucesso',
+            'schema': {
+                'type': 'object',
+                'properties': {
+                    'mensagem': {'type': 'string'},
+                    'nome': {'type': 'string'},
+                    'email': {'type': 'string'}
+                }
+            }
+        },
+        400: {
+            'description': 'Dados não fornecidos',
+            'schema': {
+                'type': 'object',
+                'properties': {
+                    'erro': {'type': 'string'}
+                }
+            }
+        }
+    }
+})
 def criar_usuario():
     dados = request.get_json()
     if not dados:
@@ -38,6 +132,36 @@ def criar_usuario():
 
 
 @usuario_blueprint.route('/usuarios/<int:id>', methods=['PUT'])
+@swag_from({
+    'parameters': [
+        {
+            'name': 'body',
+            'in': 'body',
+            'required': True,
+            'schema': {
+                'type': 'object',
+                'additionalProperties': True  # Aceita qualquer campo adicional
+            }
+        }
+    ],
+    'responses': {
+        200: {
+            'description': 'Usuário atualizado com sucesso',
+            'schema': {
+                'type': 'string'
+            }
+        },
+        400: {
+            'description': 'Usuário não encontrado ou dados não fornecidos',
+            'schema': {
+                'type': 'object',
+                'properties': {
+                    'erro': {'type': 'string'}
+                }
+            }
+        }
+    }
+})
 def atualizar_usuario(id):
     usuario = __user_service.findById(id)
     if not usuario:
@@ -50,6 +174,22 @@ def atualizar_usuario(id):
 
 
 @usuario_blueprint.route('/usuarios/<int:id>', methods=['DELETE'])
+@swag_from({
+    'responses': {
+        204: {
+            'description': 'Usuário deletado com sucesso'
+        },
+        400: {
+            'description': 'Usuário não encontrado',
+            'schema': {
+                'type': 'object',
+                'properties': {
+                    'erro': {'type': 'string'}
+                }
+            }
+        }
+    }
+})
 def deletar_usuario(id):
     usuario = __user_service.findById(id)
     if not usuario:

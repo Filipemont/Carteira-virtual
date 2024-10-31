@@ -1,5 +1,6 @@
 
 from ext.database_ext import db
+from ext.flasgeer import sg
 from flask import Flask  # type: ignore
 import config
 from controller.user_controller import usuario_blueprint
@@ -17,7 +18,7 @@ def create_app():
     app.register_blueprint(usuario_blueprint)
     app.register_blueprint(entrada_blueprint)
     db.init_app(app)
-
+    sg.init_app(app)
     return app
 
 
