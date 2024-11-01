@@ -1,5 +1,5 @@
 from service.entrada_service import EntradaService
-from flask import Blueprint, request, jsonify #type: ignore
+from flask import Blueprint, request, jsonify  # type: ignore
 
 entrada_blueprint = Blueprint('entrada', __name__)
 __entrada_service = EntradaService()
@@ -30,8 +30,8 @@ def criar_entrada():
     Descricao = dados.get('Descricao')
     Valor = dados.get('Valor')
     DataEntrada = dados.get('DataEntrada')
-    ID_Tipo_Entrada = dados.get('senha')
-    ID_Usuario = dados.get('cpf')
+    ID_Tipo_Entrada = dados.get('id_tipo_entrada')
+    ID_Usuario = dados.get('id_usuario')
     __entrada_service.save(Descricao, Valor,
                            DataEntrada, ID_Tipo_Entrada, ID_Usuario)
     return jsonify({"mensagem": "Entrada criada", "Descrição": Descricao, "Valor": Valor}), 201

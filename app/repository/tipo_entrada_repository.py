@@ -6,9 +6,9 @@ class TipoEntradaRepository:
     def __init__(self):
         self.session = db.session
 
-    def insert(self, nome, data_criacao, icone,):
+    def insert(self, nome, icone,):
         tipo_de_entrada = Tipo_Entrada(
-            Nome=nome, Data_Criacao=data_criacao, icone=icone)
+            Nome=nome, icone=icone)
         self.session.add(tipo_de_entrada)
         self.session.commit()
 
