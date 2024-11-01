@@ -1,15 +1,18 @@
 from ext.database_ext import db
 from datetime import datetime
 
+
 class Entrada(db.Model):
     __tablename__ = 'Entrada'
-    __table_args__ = {"schema": "register"}
+    __tableargs__ = {"schema": "register"}
 
     ID = db.Column(db.Integer, primary_key=True)
     Descricao = db.Column(db.String(255))
     Valor = db.Column(db.Float)
-    DataEntrada = db.Column(db.DateTime(timezone=False), nullable=True, default=lambda: datetime.now())
-    DataRegistro = db.Column(db.DateTime(timezone=False), nullable=True, default=lambda: datetime.now())
+    DataEntrada = db.Column(db.DateTime(timezone=False),
+                            nullable=True, default=lambda: datetime.now())
+    DataRegistro = db.Column(db.DateTime(
+        timezone=False), nullable=True, default=lambda: datetime.now())
 
     ID_Tipo_Entrada = db.Column(
         db.Integer, db.ForeignKey('register.Tipo_Entrada.ID'))

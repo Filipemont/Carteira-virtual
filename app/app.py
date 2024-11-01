@@ -5,6 +5,9 @@ from flask import Flask  # type: ignore
 import config
 from controller.user_controller import usuario_blueprint
 from controller.entrada_controller import entrada_blueprint
+from controller.saida_controller import saida_blueprint
+from controller.tipo_entrada_controller import tipo_entrada_blueprint
+from controller.tipo_saida_controller import tipo_saida_blueprint
 
 
 def create_app():
@@ -17,6 +20,9 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.register_blueprint(usuario_blueprint)
     app.register_blueprint(entrada_blueprint)
+    app.register_blueprint(saida_blueprint)
+    app.register_blueprint(tipo_saida_blueprint)
+    app.register_blueprint(tipo_entrada_blueprint)
     db.init_app(app)
     sg.init_app(app)
     return app
