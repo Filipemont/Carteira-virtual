@@ -10,7 +10,7 @@ class Entrada(db.Model):
     Descricao = db.Column(db.String(255))
     Valor = db.Column(db.Float)
     DataEntrada = db.Column(db.DateTime(timezone=False),
-                            nullable=True, default=lambda: datetime.now())
+                            nullable=True)
     DataRegistro = db.Column(db.DateTime(
         timezone=False), nullable=True, default=lambda: datetime.now())
 

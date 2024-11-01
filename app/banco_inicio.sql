@@ -56,8 +56,7 @@ CREATE TABLE IF NOT EXISTS public."Usuario"
     "CPF" character varying COLLATE pg_catalog."default" NOT NULL,
     "ID" serial NOT NULL,
     "Salt" bytea NOT NULL,
-    CONSTRAINT "Usuario_pkey" PRIMARY KEY ("CPF"),
-    CONSTRAINT "Usuario_ID_key" UNIQUE ("ID")
+    CONSTRAINT "Usuario_pkey" PRIMARY KEY ("ID")
 );
 
 ALTER TABLE IF EXISTS public."Entrada"
