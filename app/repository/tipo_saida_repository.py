@@ -6,9 +6,9 @@ class TipoSaidaRepository:
     def __init__(self):
         self.session = db.session
 
-    def insert(self, nome, data_criacao, icone):
+    def insert(self, nome, icone):
         tipo_de_saida = Tipo_de_Saida(
-            Nome=nome, DataCriacao=data_criacao, icone=icone)
+            Nome=nome, icone=icone)
         self.session.add(tipo_de_saida)
         self.session.commit()
 
@@ -43,4 +43,4 @@ class TipoSaidaRepository:
         return self.session.query(Tipo_de_Saida).filter_by(ID=tipo_saida_id).count() > 0
 
     def find_by_usuario_id(self, usuario_id):
-        return self.session.query(Tipo_de_Saida).filter_by(ID_Usuario=usuario_id).all()
+        return self.session.query(Tipo_de_Saida).filter_by(Id_Usuario=usuario_id).all()

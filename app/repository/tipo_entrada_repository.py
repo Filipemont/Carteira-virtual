@@ -6,7 +6,7 @@ class TipoEntradaRepository:
     def __init__(self):
         self.session = db.session
 
-    def insert(self, nome, icone,):
+    def insert(self, nome, icone):
         tipo_de_entrada = Tipo_Entrada(
             Nome=nome, icone=icone)
         self.session.add(tipo_de_entrada)

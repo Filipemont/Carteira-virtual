@@ -6,9 +6,9 @@ class SaidaRepository:
     def __init__(self):
         self.session = db.session
 
-    def insert(self, descricao, valor, data_saida, id_tipo_saida, id_usuario, data_registro):
+    def insert(self, descricao, valor, data_saida, id_tipo_saida, id_usuario):
         saida = Saida(Descricao=descricao, Valor=valor, Data_Vencimento=data_saida,
-                      DataRegistro=data_registro, ID_Tipo_Saida=id_tipo_saida, ID_Usuario=id_usuario)
+                      ID_Tipo_Saida=id_tipo_saida, ID_Usuario=id_usuario)
         self.session.add(saida)
         self.session.commit()
 
