@@ -22,3 +22,9 @@ class EntradaService:
     def update(self, id, updated_data):
         entrada_atualizada = self.__repository.update(id, updated_data)
         return entrada_atualizada
+
+    def find_by_tipo_entrada_id(self, tipo_entrada_id):
+        return self.__repository.find_by_tipo_entrada(tipo_entrada_id)
+    
+    def find_by_usuario_id(self, usuario_id):
+        return self.__repository.find_by_usuario_id(usuario_id)

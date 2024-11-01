@@ -43,7 +43,9 @@ class SaidaRepository:
         return self.session.query(Saida).filter_by(ID=saida_id).count() > 0
 
     def find_by_usuario_id(self, usuario_id):
-        return self.session.query(Saida).filter_by(Id_Usuario=usuario_id).all()
+        saidas = self.session.query(Saida).filter_by(Id_Usuario=usuario_id).all()
+        return [saida.to_dict() for saida in saidas]
 
     def find_by_tipo_saida(self, tipo_saida_id):
-        return self.session.query(Saida).filter_by(ID_Tipo_Saida=tipo_saida_id).all()
+        saidas = self.session.query(Saida).filter_by(ID_Tipo_Saida=tipo_saida_id).all()
+        return [saida.to_dict() for saida in saidas]

@@ -21,3 +21,6 @@ class TipoSaidaService:
     def update(self, id, updated_data):
         tipo_saida_atualizada = self.__repository.update(id, updated_data)
         return tipo_saida_atualizada
+    
+    def find_by_user_id(self, user_id):
+        return self.__repository.find_by_usuario_id(user_id)

@@ -43,4 +43,6 @@ class TipoEntradaRepository:
         return self.session.query(Tipo_Entrada).filter_by(ID=tipo_entrada_id).count() > 0
 
     def find_by_usuario_id(self, usuario_id):
-        return self.session.query(Tipo_Entrada).filter_by(Id_Usuario=usuario_id).all()
+        tipos_de_entrada = self.session.query(Tipo_Entrada).filter_by(Id_Usuario=usuario_id).all()
+        return [tipo_de_entrada.to_dict() for tipo_de_entrada in tipos_de_entrada]
+

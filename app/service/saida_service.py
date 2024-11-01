@@ -21,4 +21,9 @@ class SaidaService:
     def update(self, id, updated_data):
         saida_atualizada = self.__repository.update(id, updated_data)
         return saida_atualizada
-        
+    
+    def find_by_user_id(self, user_id):
+        return self.__repository.find_by_usuario_id(user_id)
+    
+    def find_by_tipo_saida_id(self, tipo_entrada_id):
+        return self.__repository.find_by_tipo_saida(tipo_entrada_id)
