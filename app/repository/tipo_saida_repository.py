@@ -7,7 +7,8 @@ class TipoSaidaRepository:
         self.session = db.session
 
     def insert(self, nome, data_criacao, icone):
-        tipo_de_saida = Tipo_de_Saida(Nome=nome, DataCriacao=data_criacao, icone=icone)
+        tipo_de_saida = Tipo_de_Saida(
+            Nome=nome, DataCriacao=data_criacao, icone=icone)
         self.session.add(tipo_de_saida)
         self.session.commit()
 
@@ -15,7 +16,8 @@ class TipoSaidaRepository:
         return self.session.query(Tipo_de_Saida).filter_by(ID=tipo_saida_id).first()
 
     def get_all(self):
-        return self.session.query(Tipo_de_Saida).all()
+        tipos_de_saidas = self.session.query(Tipo_de_Saida).all()
+        return [tipo_de_saida.to_dict() for tipo_de_saida in tipos_de_saidas]
 
     def delete_by_id(self, tipo_saida_id):
         tipo_saida = self.get_by_id(tipo_saida_id)

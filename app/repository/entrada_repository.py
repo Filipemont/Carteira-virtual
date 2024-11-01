@@ -16,7 +16,8 @@ class EntradaRepository:
         return self.session.query(Entrada).filter_by(ID=entrada_id).first()
 
     def get_all(self):
-        return self.session.query(Entrada).all()
+        entradas = self.session.query(Entrada).all()
+        return [entrada.to_dict() for entrada in entradas]
 
     def delete_by_id(self, entrada_id):
         entrada = self.get_by_id(entrada_id)

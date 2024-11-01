@@ -20,3 +20,8 @@ class Saida(db.Model):
 
     tipo_saida = db.relationship("Tipo_de_Saida", backref="saidas")
     usuario = db.relationship("Usuario", backref="saidas")
+
+    def to_dict(self):
+        return {"Descricao": self.Descricao,
+                "Valor": self.Valor,
+                }

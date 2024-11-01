@@ -18,5 +18,10 @@ class Entrada(db.Model):
         db.Integer, db.ForeignKey('register.Tipo_Entrada.ID'))
     ID_Usuario = db.Column(db.Integer, db.ForeignKey('register.Usuario.ID'))
 
-    # tipo_entrada = db.relationship("Tipo_Entrada", backref="entradas")
-    # usuario = db.relationship("Usuario", backref="entradas")
+    tipo_entrada = db.relationship("Tipo_Entrada", backref="entradas")
+    usuario = db.relationship("Usuario", backref="entradas")
+
+    def to_dict(self):
+        return {"Descricao": self.Descricao,
+                "Valor": self.Valor,
+                }

@@ -15,3 +15,8 @@ class Tipo_de_Saida(db.Model):
     ID_Usuario = db.Column(db.Integer, db.ForeignKey('register.Usuario.ID'))
 
     usuario = db.relationship("User", backref="tipos_de_saida")
+
+    def to_dict(self):
+        return {"nome": self.Nome,
+                "icone": self.icone,
+                }
