@@ -25,5 +25,6 @@ class Entrada(db.Model):
                 "Valor": self.Valor,
                 "Id_Usuario": self.Id_Usuario,
                 "ID_Tipo_Entrada": self.ID_Tipo_Entrada,
-                "DataEntrada": self.DataEntrada
+                "DataEntrada": self.DataEntrada,
+                "DataRegistro": self.DataRegistro,
                 }

@@ -1,5 +1,5 @@
-
 from ext.database_ext import db
+from ext.migrate import db_migration
 from ext.flasgeer import sg
 from flask import Flask  # type: ignore
 import config
@@ -25,6 +25,7 @@ def create_app():
     app.register_blueprint(tipo_entrada_blueprint)
     db.init_app(app)
     sg.init_app(app)
+    db_migration.init_app(app, db)
     return app
 
 

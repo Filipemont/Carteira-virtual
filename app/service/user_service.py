@@ -8,7 +8,8 @@ class UserService:
     def save(self, nome, sobrenome, email, senha, cpf):
         if not self.__repository.find_by_email(email):
             salt = bcrypt.gensalt()
-            self.__repository.insert(nome, sobrenome, email, senha, cpf, salt)
+            hashed_password = bcrypt.hashpw(senha.encode('utf-8'), salt)
+            self.__repository.insert(nome, sobrenome, email, hashed_password, cpf, salt)
 
     def find_all(self):
         return self.__repository.get_all()
@@ -27,3 +28,12 @@ class UserService:
 
     def find_by_email(self, email):
         return self.__repository.find_by_email(email)
+
+    def login(self, email, senha):
+        usuario: object = self.__repository.find_by_email(email)
+        if usuario:
+            if usuario.senha == bcrypt.hashpw(senha, usuario.salt):
+                return True
+            else:
+                return False
+        return False
