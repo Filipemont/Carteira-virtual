@@ -7,8 +7,8 @@ class SaidaRepository:
         self.session = db.session
 
     def insert(self, descricao, valor, data_saida, id_tipo_saida, id_usuario, data_registro):
-        saida = Saida(Descricao=descricao, Valor=valor, DataSaida=data_saida,
-                      DataRegistro=data_registro, ID_Tipo_Entrada=id_tipo_saida, ID_Usuario=id_usuario)
+        saida = Saida(Descricao=descricao, Valor=valor, Data_Vencimento=data_saida,
+                      DataRegistro=data_registro, ID_Tipo_Saida=id_tipo_saida, ID_Usuario=id_usuario)
         self.session.add(saida)
         self.session.commit()
 
@@ -43,7 +43,7 @@ class SaidaRepository:
         return self.session.query(Saida).filter_by(ID=saida_id).count() > 0
 
     def find_by_usuario_id(self, usuario_id):
-        return self.session.query(Saida).filter_by(ID_Usuario=usuario_id).all()
+        return self.session.query(Saida).filter_by(Id_Usuario=usuario_id).all()
 
     def find_by_tipo_saida(self, tipo_saida_id):
         return self.session.query(Saida).filter_by(ID_Tipo_Saida=tipo_saida_id).all()

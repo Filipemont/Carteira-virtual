@@ -8,13 +8,11 @@ class Tipo_de_Saida(db.Model):
 
     ID = db.Column(db.Integer, primary_key=True)
     Nome = db.Column(db.String(255), nullable=False)
-    DataCriacao = db.Column(db.DateTime(timezone=False),
-                            nullable=True, default=lambda: datetime.now())
+    Data_Criacao = db.Column(db.DateTime(timezone=False),
+                             nullable=True, default=lambda: datetime.now())
     icone = db.Column(db.String(255))
 
-    ID_Usuario = db.Column(db.Integer, db.ForeignKey('register.Usuario.ID'))
-
-    usuario = db.relationship("User", backref="tipos_de_saida")
+    Id_Usuario = db.Column(db.Integer, db.ForeignKey('register.Usuario.ID'))
 
     def to_dict(self):
         return {"nome": self.Nome,

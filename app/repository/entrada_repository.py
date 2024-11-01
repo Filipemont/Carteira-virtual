@@ -8,7 +8,7 @@ class EntradaRepository:
 
     def insert(self, descricao, valor, data_entrada, data_registro, id_tipo_entrada, id_usuario):
         entrada = Entrada(Descricao=descricao, Valor=valor, DataEntrada=data_entrada,
-                          DataRegistro=data_registro, ID_Tipo_Entrada=id_tipo_entrada, ID_Usuario=id_usuario)
+                          DataRegistro=data_registro, ID_Tipo_Entrada=id_tipo_entrada, Id_Usuario=id_usuario)
         self.session.add(entrada)
         self.session.commit()
 
@@ -43,7 +43,7 @@ class EntradaRepository:
         return self.session.query(Entrada).filter_by(ID=entrada_id).count() > 0
 
     def find_by_usuario_id(self, usuario_id):
-        return self.session.query(Entrada).filter_by(ID_Usuario=usuario_id).all()
+        return self.session.query(Entrada).filter_by(Id_Usuario=usuario_id).all()
 
     def find_by_tipo_entrada(self, tipo_entrada_id):
         return self.session.query(Entrada).filter_by(ID_Tipo_Entrada=tipo_entrada_id).all()

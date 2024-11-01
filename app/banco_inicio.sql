@@ -11,18 +11,19 @@ CREATE TABLE IF NOT EXISTS public."Entrada"
     "ID" serial NOT NULL,
     "ID_Tipo_Entrada" integer,
     "Id_Usuario" integer,
+    "DataRegistro" timestamp without time zone[],
     CONSTRAINT "Entrada_pkey" PRIMARY KEY ("ID")
 );
 
 CREATE TABLE IF NOT EXISTS public."Saida"
 (
-    "Usuario" character varying COLLATE pg_catalog."default" NOT NULL,
     "Descricao" character varying COLLATE pg_catalog."default",
     "Valor" double precision NOT NULL,
     "Data_Vencimento" timestamp without time zone,
     "ID" serial NOT NULL,
     "ID_Tipo_Saida" integer,
     "ID_Usuario" integer,
+    "DataRegistro" timestamp without time zone[],
     CONSTRAINT "Saida_pkey" PRIMARY KEY ("ID")
 );
 
@@ -32,6 +33,7 @@ CREATE TABLE IF NOT EXISTS public."Tipo_Entrada"
     "Nome" character varying COLLATE pg_catalog."default" NOT NULL,
     "Data_Criacao" timestamp without time zone NOT NULL,
     "Id_Usuario" integer,
+    icone character varying[] COLLATE pg_catalog."default",
     CONSTRAINT "Tipo_Entrada_pkey" PRIMARY KEY ("ID")
 );
 
@@ -41,6 +43,7 @@ CREATE TABLE IF NOT EXISTS public."Tipo_de_Saida"
     "Data_Criacao" timestamp without time zone NOT NULL,
     "ID" serial NOT NULL,
     "Id_Usuario" integer,
+    icone character varying[] COLLATE pg_catalog."default",
     CONSTRAINT "Tipo_de_Saida_pkey" PRIMARY KEY ("ID")
 );
 
