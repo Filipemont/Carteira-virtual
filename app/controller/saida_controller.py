@@ -12,6 +12,19 @@ def listar_saidas():
         return jsonify(todas_saidas), 200
     return jsonify({"erro": "Nenhuma saida em nossa base de dados"}), 404
 
+@saida_blueprint.route('/saidas-por-usuario/<int:id>', methods=['GET'])
+def listar_saidas_por_usuario(id):
+    todas_saidas = __saida_service.find_by_user_id(id)
+    if todas_saidas:
+        return jsonify(todas_saidas), 200
+    return jsonify({"erro": "Nenhuma saida em nossa base de dados"}), 404
+
+@saida_blueprint.route('/saidas-por-tipo-saida/<int:id>', methods=['GET'])
+def listar_saidas_por_tipo_saida(id):
+    todas_saidas = __saida_service.find_by_tipo_saida_id(id)
+    if todas_saidas:
+        return jsonify(todas_saidas), 200
+    return jsonify({"erro": "Nenhuma saida em nossa base de dados"}), 404
 
 @saida_blueprint.route('/saidas/<int:id>', methods=['GET'])
 def obter_saida(id):

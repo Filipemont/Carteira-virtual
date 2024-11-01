@@ -15,6 +15,10 @@ class Tipo_Entrada(db.Model):
     Id_Usuario = db.Column(db.Integer, db.ForeignKey('register.Usuario.ID'))
 
     def to_dict(self):
-        return {"nome": self.Nome,
+        return {
+                "Id": self.ID,
+                "nome": self.Nome,
                 "icone": self.icone,
+                "Data_Criacao": self.Data_Criacao,
+                "Id_Usuario": self.Id_Usuario
                 }

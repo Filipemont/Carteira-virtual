@@ -19,6 +19,12 @@ class Saida(db.Model):
     ID_Usuario = db.Column(db.Integer, db.ForeignKey('register.Usuario.ID'))
 
     def to_dict(self):
-        return {"Descricao": self.Descricao,
+        return {
+                "Id": self.ID,
+                "Descricao": self.Descricao,
                 "Valor": self.Valor,
+                "Id_Usuario": self.Id_Usuario,
+                "ID_Tipo_Saida": self.ID_Tipo_Entrada,
+                "Data_Vencimento": self.Data_Vencimento,
+                "DataRegistro": self.DataRegistro,
                 }

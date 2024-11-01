@@ -14,7 +14,10 @@ class User(db.Model):
     Salt = db.Column(db.LargeBinary, nullable=True)
 
     def to_dict(self):
-        return {"nome": self.Nome,
+        return {
+                "Id": self.ID,
+                "nome": self.Nome,
                 "sobrenome": self.Sobrenome,
                 "email": self.Email,
-                "cpf": self.CPF}
+                "cpf": self.CPF
+                }

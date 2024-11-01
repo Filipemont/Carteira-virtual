@@ -13,7 +13,8 @@ class TipoSaidaRepository:
         self.session.commit()
 
     def get_by_id(self, tipo_saida_id):
-        return self.session.query(Tipo_de_Saida).filter_by(ID=tipo_saida_id).first()
+        tipo_de_saida = self.session.query(Tipo_de_Saida).filter_by(ID=tipo_saida_id).first()
+        return tipo_de_saida.to_dict()
 
     def get_all(self):
         tipos_de_saidas = self.session.query(Tipo_de_Saida).all()

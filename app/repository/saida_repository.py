@@ -13,7 +13,8 @@ class SaidaRepository:
         self.session.commit()
 
     def get_by_id(self, saida_id):
-        return self.session.query(Saida).filter_by(ID=saida_id).first()
+        saida = self.session.query(Saida).filter_by(ID=saida_id).first()
+        return saida.to_dict()
 
     def get_all(self):
         saidas = self.session.query(Saida).all()

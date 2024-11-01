@@ -7,9 +7,9 @@ __tipo_saida_service = TipoSaidaService()
 
 @tipo_saida_blueprint.route('/tipo-de-saidas', methods=['GET'])
 def listar_tipos_de_saidas():
-    todas_saidas = __tipo_saida_service.find_all()
-    if todas_saidas:
-        return jsonify(todas_saidas), 200
+    todos_tipos_de_saidas = __tipo_saida_service.find_all()
+    if todos_tipos_de_saidas:
+        return jsonify(todos_tipos_de_saidas), 200
     return jsonify({"erro": "Nenhum tipo de saida em nossa base de dados"}), 404
 
 
@@ -17,7 +17,15 @@ def listar_tipos_de_saidas():
 def obter_tipos_de_saida(id):
     tipo_de_saida = __tipo_saida_service.findById(id)
     if tipo_de_saida:
-        return tipo_de_saida
+        return jsonify(tipo_de_saida), 200
+    return jsonify({"erro": "tipo de saida não encontrado"}), 400
+
+
+@tipo_saida_blueprint.route('/tipo-de-saidas-por-usuario/<int:id>', methods=['GET'])
+def obter_tipos_de_saida_por_usuario(id):
+    todos_tipos_de_saidas = __tipo_saida_service.find_by_user_id(id)
+    if todos_tipos_de_saidas:
+        return jsonify(todos_tipos_de_saidas), 200
     return jsonify({"erro": "tipo de saida não encontrado"}), 400
 
 

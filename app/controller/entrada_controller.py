@@ -12,6 +12,19 @@ def listar_entradas():
         return jsonify(todas_entradas), 200
     return jsonify({"erro": "Nenhum usuario em nossa base de dados"}), 404
 
+@entrada_blueprint.route('/entradas-por-usuario/<int:id>', methods=['GET'])
+def obter_entrada_por_usuario(id):
+    entradas = __entrada_service.find_by_usuario_id(id)
+    if entradas:
+        return jsonify(entradas), 200
+    return jsonify({"erro": "Usuario não encontrado"}), 400
+
+@entrada_blueprint.route('/entradas-por-tipo-entrada/<int:id>', methods=['GET'])
+def obter_entrada_por_tipo_entrada(id):
+    entradas = __entrada_service.find_by_tipo_entrada_id(id)
+    if entradas:
+        return jsonify(entradas), 200
+    return jsonify({"erro": "Usuario não encontrado"}), 400
 
 @entrada_blueprint.route('/entradas/<int:id>', methods=['GET'])
 def obter_entrada(id):

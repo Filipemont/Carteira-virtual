@@ -7,7 +7,8 @@ class UserRepository:
         self.session = db.session
 
     def get_by_id(self, user_id):
-        return self.session.query(User).filter_by(ID=user_id).first()
+        usuario = self.session.query(User).filter_by(ID=user_id).first()
+        return usuario.to_dict()
 
     def get_all(self):
         users = self.session.query(User).all()

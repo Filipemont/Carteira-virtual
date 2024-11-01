@@ -12,14 +12,19 @@ def listar_tipos_de_entradas():
         return jsonify(todas_entradas), 200
     return jsonify({"erro": "Nenhum tipo de entrada em nossa base de dados"}), 404
 
-
 @tipo_entrada_blueprint.route('/tipo-de-entradas/<int:id>', methods=['GET'])
 def obter_tipos_de_entrada(id):
     tipo_de_entrada = __tipo_entrada_service.findById(id)
     if tipo_de_entrada:
-        return tipo_de_entrada
+        return jsonify(tipo_de_entrada), 200
     return jsonify({"erro": "tipo de entrada não encontrado"}), 400
 
+@tipo_entrada_blueprint.route('/tipo-de-entradas-por-usuario/<int:id>', methods=['GET'])
+def obter_tipos_de_entrada_por_usuario(id):
+    todas_entradas = __tipo_entrada_service.find_by_user_id(id)
+    if todas_entradas:
+        return jsonify(todas_entradas), 200
+    return jsonify({"erro": "Nenhum tipo de entrada em nossa base de dados"}), 404
 
 @tipo_entrada_blueprint.route('/tipo-de-entradas', methods=['POST'])
 def criar_tipos_de_entrada():
