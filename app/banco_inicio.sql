@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS register."Entrada"
     "ID" serial NOT NULL,
     "ID_Tipo_Entrada" integer,
     "Id_Usuario" integer,
-    "DataRegistro" timestamp without time zone[],
+    "DataRegistro" character varying[] COLLATE pg_catalog."default",
     CONSTRAINT "Entrada_pkey" PRIMARY KEY ("ID")
 );
 
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS register."Saida"
     "ID" serial NOT NULL,
     "ID_Tipo_Saida" integer,
     "ID_Usuario" integer,
-    "DataRegistro" timestamp without time zone[],
+    "DataRegistro" character varying[] COLLATE pg_catalog."default",
     CONSTRAINT "Saida_pkey" PRIMARY KEY ("ID")
 );
 

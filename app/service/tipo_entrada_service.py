@@ -4,8 +4,8 @@ from repository.tipo_entrada_repository import TipoEntradaRepository
 class TipoEntradaService:
     __repository = TipoEntradaRepository()
 
-    def save(self, nome, icone):
-        self.__repository.insert(nome, icone)
+    def save(self, nome, icone, id_usuario):
+        self.__repository.insert(nome, icone, id_usuario)
 
     def find_all(self):
         return self.__repository.get_all()

@@ -4,8 +4,8 @@ from repository.tipo_saida_repository import TipoSaidaRepository
 class TipoSaidaService:
     __repository = TipoSaidaRepository()
 
-    def save(self, nome, icone):
-        self.__repository.insert(nome, icone)
+    def save(self, nome, icone, id_usuario):
+        self.__repository.insert(nome, icone, id_usuario)
 
     def find_all(self):
         return self.__repository.get_all()

@@ -6,12 +6,11 @@ class SaidaRepository:
     def __init__(self):
         self.session = db.session
 
-    def insert(self, descricao, valor, data_saida, id_tipo_saida, id_usuario):
-        saida = Saida(Descricao=descricao, Valor=valor, Data_Vencimento=data_saida,
-                      ID_Tipo_Saida=id_tipo_saida, ID_Usuario=id_usuario)
+    def insert(self, descricao, valor, data_saida, data_registro, id_tipo_saida, id_usuario):
+        saida = Saida(Descricao=descricao, Valor=valor, Data_Vencimento=data_saida, DataRegistro=data_registro,
+                          ID_Tipo_Saida=id_tipo_saida, ID_Usuario=id_usuario)
         self.session.add(saida)
         self.session.commit()
-
     def get_by_id(self, saida_id):
         saida = self.session.query(Saida).filter_by(ID=saida_id).first()
         return saida.to_dict()

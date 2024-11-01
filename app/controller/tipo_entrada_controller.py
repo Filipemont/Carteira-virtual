@@ -95,7 +95,8 @@ def obter_tipos_de_entrada_por_usuario(id):
                 'type': 'object',
                 'properties': {
                     'nome': {'type': 'string'},
-                    'icone': {'type': 'string'}
+                    'icone': {'type': 'string'},
+                    'id_usuario': {'type': 'integer'},
                 }
             }
         }
@@ -117,7 +118,8 @@ def criar_tipos_de_entrada():
 
     nome = dados.get('nome')
     icone = dados.get('icone')
-    __tipo_entrada_service.save(nome, icone)
+    id_usuario = dados.get('id_usuario')
+    __tipo_entrada_service.save(nome, icone, id_usuario)
     return jsonify({"mensagem": "Tipo de entrada criada", "Nome": nome}), 201
 
 

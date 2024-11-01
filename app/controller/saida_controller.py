@@ -152,8 +152,8 @@ def criar_saida():
     Descricao = dados.get('Descricao')
     Valor = dados.get('Valor')
     DataSaida = dados.get('DataSaida')
-    ID_Tipo_Saida = dados.get('senha')
-    ID_Usuario = dados.get('cpf')
+    ID_Tipo_Saida = dados.get('ID_Tipo_Saida')
+    ID_Usuario = dados.get('ID_Usuario')
     __saida_service.save(Descricao, Valor,
                            DataSaida, ID_Tipo_Saida, ID_Usuario)
     return jsonify({"mensagem": "Saida criada", "Descrição": Descricao, "Valor": Valor}), 201

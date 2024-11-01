@@ -6,9 +6,9 @@ class TipoSaidaRepository:
     def __init__(self):
         self.session = db.session
 
-    def insert(self, nome, icone):
+    def insert(self, nome, icone , id_usuario):
         tipo_de_saida = Tipo_de_Saida(
-            Nome=nome, icone=icone)
+            Nome=nome, icone=icone, Id_Usuario=id_usuario)
         self.session.add(tipo_de_saida)
         self.session.commit()
 

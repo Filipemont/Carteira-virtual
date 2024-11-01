@@ -98,7 +98,8 @@ def obter_tipos_de_saida_por_usuario(id):
                 'type': 'object',
                 'properties': {
                     'nome': {'type': 'string'},
-                    'icone': {'type': 'string'}
+                    'icone': {'type': 'string'},
+                    'id_usuario': {'type': 'integer'},
                 }
             }
         }
@@ -120,7 +121,8 @@ def criar_tipos_de_saida():
 
     nome = dados.get('nome')
     icone = dados.get('icone')
-    __tipo_saida_service.save(nome, icone)
+    id_usuario = dados.get('id_usuario')
+    __tipo_saida_service.save(nome, icone, id_usuario)
     return jsonify({"mensagem": "Tipo de saida criada", "Nome": nome}), 201
 
 

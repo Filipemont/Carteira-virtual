@@ -11,8 +11,7 @@ class Saida(db.Model):
     Valor = db.Column(db.Float)
     Data_Vencimento = db.Column(db.DateTime(timezone=False),
                                 nullable=True)
-    DataRegistro = db.Column(db.DateTime(
-        timezone=False), nullable=True, default=lambda: datetime.now())
+    DataRegistro = db.Column(db.String(255))
 
     ID_Tipo_Saida = db.Column(
         db.Integer, db.ForeignKey('Tipo_de_Saida.ID'))
@@ -23,7 +22,7 @@ class Saida(db.Model):
                 "Id": self.ID,
                 "Descricao": self.Descricao,
                 "Valor": self.Valor,
-                "Id_Usuario": self.Id_Usuario,
+                "Id_Usuario": self.ID_Usuario,
                 "ID_Tipo_Saida": self.ID_Tipo_Entrada,
                 "Data_Vencimento": self.Data_Vencimento,
                 "DataRegistro": self.DataRegistro,

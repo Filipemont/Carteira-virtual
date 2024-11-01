@@ -1,11 +1,14 @@
 from repository.saida_repository import SaidaRepository
-
+from datetime import datetime
 
 class SaidaService:
     __repository = SaidaRepository()
 
     def save(self, descricao, valor, data_saida, id_tipo_saida, Id_usuario):
-        self.__repository.insert(descricao, valor, data_saida, id_tipo_saida, Id_usuario)
+        data_criacao = '{' + datetime.now().strftime('%Y-%m-%d') +'}'
+        self.__repository.insert(
+            descricao, valor, data_saida, data_criacao, id_tipo_saida, Id_usuario)
+
 
     def find_all(self):
         return self.__repository.get_all()
