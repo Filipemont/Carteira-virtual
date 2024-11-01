@@ -1,6 +1,6 @@
 from service.entrada_service import EntradaService
 from flask import Blueprint, request, jsonify  # type: ignore
-from flasgger import swag_from # type: ignore
+from flasgger import swag_from  # type: ignore
 
 entrada_blueprint = Blueprint('entrada', __name__)
 __entrada_service = EntradaService()
@@ -26,6 +26,7 @@ def listar_entradas():
     if todas_entradas:
         return jsonify(todas_entradas), 200
     return jsonify({"erro": "Nenhum usuario em nossa base de dados"}), 404
+
 
 @entrada_blueprint.route('/entradas-por-usuario/<int:id>', methods=['GET'])
 @swag_from({
@@ -57,6 +58,7 @@ def obter_entrada_por_usuario(id):
         return jsonify(entradas), 200
     return jsonify({"erro": "Usuario não encontrado"}), 400
 
+
 @entrada_blueprint.route('/entradas-por-tipo-entrada/<int:id>', methods=['GET'])
 @swag_from({
     'parameters': [
@@ -86,6 +88,7 @@ def obter_entrada_por_tipo_entrada(id):
     if entradas:
         return jsonify(entradas), 200
     return jsonify({"erro": "Usuario não encontrado"}), 400
+
 
 @entrada_blueprint.route('/entradas/<int:id>', methods=['GET'])
 @swag_from({

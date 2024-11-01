@@ -15,8 +15,8 @@ class Saida(db.Model):
         timezone=False), nullable=True, default=lambda: datetime.now())
 
     ID_Tipo_Saida = db.Column(
-        db.Integer, db.ForeignKey('register.Tipo_de_Saida.ID'))
-    ID_Usuario = db.Column(db.Integer, db.ForeignKey('register.Usuario.ID'))
+        db.Integer, db.ForeignKey('Tipo_de_Saida.ID'))
+    ID_Usuario = db.Column(db.Integer, db.ForeignKey('Usuario.ID'))
 
     def to_dict(self):
         return {

@@ -3,7 +3,7 @@
 BEGIN;
 
 
-CREATE TABLE IF NOT EXISTS public."Entrada"
+CREATE TABLE IF NOT EXISTS register."Entrada"
 (
     "Descricao" character varying COLLATE pg_catalog."default",
     "Valor" double precision,
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS public."Entrada"
     CONSTRAINT "Entrada_pkey" PRIMARY KEY ("ID")
 );
 
-CREATE TABLE IF NOT EXISTS public."Saida"
+CREATE TABLE IF NOT EXISTS register."Saida"
 (
     "Descricao" character varying COLLATE pg_catalog."default",
     "Valor" double precision NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS public."Saida"
     CONSTRAINT "Saida_pkey" PRIMARY KEY ("ID")
 );
 
-CREATE TABLE IF NOT EXISTS public."Tipo_Entrada"
+CREATE TABLE IF NOT EXISTS register."Tipo_Entrada"
 (
     "ID" serial NOT NULL,
     "Nome" character varying COLLATE pg_catalog."default" NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS public."Tipo_Entrada"
     CONSTRAINT "Tipo_Entrada_pkey" PRIMARY KEY ("ID")
 );
 
-CREATE TABLE IF NOT EXISTS public."Tipo_de_Saida"
+CREATE TABLE IF NOT EXISTS register."Tipo_de_Saida"
 (
     "Nome" character varying COLLATE pg_catalog."default",
     "Data_Criacao" timestamp without time zone NOT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS public."Tipo_de_Saida"
     CONSTRAINT "Tipo_de_Saida_pkey" PRIMARY KEY ("ID")
 );
 
-CREATE TABLE IF NOT EXISTS public."Usuario"
+CREATE TABLE IF NOT EXISTS register."Usuario"
 (
     "Nome" character varying(60) COLLATE pg_catalog."default" NOT NULL,
     "Sobrenome" character varying(60) COLLATE pg_catalog."default" NOT NULL,
@@ -59,44 +59,44 @@ CREATE TABLE IF NOT EXISTS public."Usuario"
     CONSTRAINT "Usuario_pkey" PRIMARY KEY ("ID")
 );
 
-ALTER TABLE IF EXISTS public."Entrada"
+ALTER TABLE IF EXISTS register."Entrada"
     ADD CONSTRAINT "Entrada_ID_Tipo_Entrada_fkey" FOREIGN KEY ("ID_Tipo_Entrada")
-    REFERENCES public."Tipo_Entrada" ("ID") MATCH SIMPLE
+    REFERENCES register."Tipo_Entrada" ("ID") MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION;
 
 
-ALTER TABLE IF EXISTS public."Entrada"
+ALTER TABLE IF EXISTS register."Entrada"
     ADD CONSTRAINT "Entrada_Id_Usuario_fkey" FOREIGN KEY ("Id_Usuario")
-    REFERENCES public."Usuario" ("ID") MATCH SIMPLE
+    REFERENCES register."Usuario" ("ID") MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION;
 
 
-ALTER TABLE IF EXISTS public."Saida"
+ALTER TABLE IF EXISTS register."Saida"
     ADD CONSTRAINT "Saida_ID_Tipo_Saida_fkey" FOREIGN KEY ("ID_Tipo_Saida")
-    REFERENCES public."Tipo_de_Saida" ("ID") MATCH SIMPLE
+    REFERENCES register."Tipo_de_Saida" ("ID") MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION;
 
 
-ALTER TABLE IF EXISTS public."Saida"
+ALTER TABLE IF EXISTS register."Saida"
     ADD CONSTRAINT "Saida_ID_Usuario_fkey" FOREIGN KEY ("ID_Usuario")
-    REFERENCES public."Usuario" ("ID") MATCH SIMPLE
+    REFERENCES register."Usuario" ("ID") MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION;
 
 
-ALTER TABLE IF EXISTS public."Tipo_Entrada"
+ALTER TABLE IF EXISTS register."Tipo_Entrada"
     ADD CONSTRAINT "Tipo_Entrada_Id_Usuario_fkey" FOREIGN KEY ("Id_Usuario")
-    REFERENCES public."Usuario" ("ID") MATCH SIMPLE
+    REFERENCES register."Usuario" ("ID") MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION;
 
 
-ALTER TABLE IF EXISTS public."Tipo_de_Saida"
+ALTER TABLE IF EXISTS register."Tipo_de_Saida"
     ADD CONSTRAINT "Tipo_de_Saida_Id_Usuario_fkey" FOREIGN KEY ("Id_Usuario")
-    REFERENCES public."Usuario" ("ID") MATCH SIMPLE
+    REFERENCES register."Usuario" ("ID") MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION;
 

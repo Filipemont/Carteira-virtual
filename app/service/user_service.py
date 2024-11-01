@@ -9,7 +9,8 @@ class UserService:
         if not self.__repository.find_by_email(email):
             salt = bcrypt.gensalt()
             hashed_password = bcrypt.hashpw(senha.encode('utf-8'), salt)
-            self.__repository.insert(nome, sobrenome, email, hashed_password, cpf, salt)
+            self.__repository.insert(
+                nome, sobrenome, email, hashed_password.decode('utf-8'), cpf, salt)
 
     def find_all(self):
         return self.__repository.get_all()

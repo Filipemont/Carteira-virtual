@@ -12,7 +12,7 @@ class Tipo_de_Saida(db.Model):
                              nullable=True, default=lambda: datetime.now())
     icone = db.Column(db.String(255))
 
-    Id_Usuario = db.Column(db.Integer, db.ForeignKey('register.Usuario.ID'))
+    Id_Usuario = db.Column(db.Integer, db.ForeignKey('Usuario.ID'))
 
     def to_dict(self):
         return {
