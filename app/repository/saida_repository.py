@@ -21,7 +21,7 @@ class SaidaRepository:
         return [saida.to_dict() for saida in saidas]
 
     def delete_by_id(self, saida_id):
-        saida = self.get_by_id(saida_id)
+        saida = self.session.query(Saida).filter_by(ID=saida_id).first()
         if saida:
             self.session.delete(saida)
             self.session.commit()

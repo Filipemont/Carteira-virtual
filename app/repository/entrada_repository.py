@@ -21,7 +21,7 @@ class EntradaRepository:
         return [entrada.to_dict() for entrada in entradas]
 
     def delete_by_id(self, entrada_id):
-        entrada = self.get_by_id(entrada_id)
+        entrada = self.session.query(Entrada).filter_by(ID=entrada_id).first()
         if entrada:
             self.session.delete(entrada)
             self.session.commit()

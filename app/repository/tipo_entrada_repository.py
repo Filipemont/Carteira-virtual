@@ -21,7 +21,7 @@ class TipoEntradaRepository:
         return [tipo_de_entrada.to_dict() for tipo_de_entrada in tipos_de_entrada]
 
     def delete_by_id(self, tipo_entrada_id):
-        tipo_entrada = self.get_by_id(tipo_entrada_id)
+        tipo_entrada = self.session.query(Tipo_Entrada).filter_by(ID=tipo_entrada_id).first()
         if tipo_entrada:
             self.session.delete(tipo_entrada)
             self.session.commit()

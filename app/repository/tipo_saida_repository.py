@@ -21,7 +21,7 @@ class TipoSaidaRepository:
         return [tipo_de_saida.to_dict() for tipo_de_saida in tipos_de_saidas]
 
     def delete_by_id(self, tipo_saida_id):
-        tipo_saida = self.get_by_id(tipo_saida_id)
+        tipo_saida = self.session.query(Tipo_de_Saida).filter_by(ID=tipo_saida_id).first()
         if tipo_saida:
             self.session.delete(tipo_saida)
             self.session.commit()
