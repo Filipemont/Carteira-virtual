@@ -33,7 +33,7 @@ class UserService:
     def login(self, email, senha):
         usuario: object = self.__repository.find_by_email(email)
         if usuario:
-            if usuario.senha == bcrypt.hashpw(senha, usuario.salt):
+            if usuario.Senha == bcrypt.hashpw(senha.encode('utf-8'), usuario.Salt):
                 return True
             else:
                 return False

@@ -131,8 +131,8 @@ def obter_entrada(id):
                     'Descricao': {'type': 'string'},
                     'Valor': {'type': 'number'},
                     'DataEntrada': {'type': 'string', 'format': 'date'},
-                    'ID_Tipo_Entrada': {'type': 'integer'},
-                    'ID_Usuario': {'type': 'integer'}
+                    'id_tipo_entrada': {'type': 'integer'},
+                    'id_usuario': {'type': 'integer'}
                 }
             }
         }
@@ -217,7 +217,7 @@ def atualizar_entrada(id):
             'type': 'integer',
             'required': True,
             'description': 'ID da entrada a ser deletada'
-        }
+        },
     ],
     'responses': {
         204: {

@@ -9,17 +9,18 @@ class UserRepository:
     def get_by_id(self, user_id):
         usuario = self.session.query(User).filter_by(ID=user_id).first()
         return usuario.to_dict()
+    
+
 
     def get_all(self):
         users = self.session.query(User).all()
         return [user.to_dict() for user in users]
      
     def delete_by_id(self, user_id):
-        user = self.get_by_id(user_id)
+        user = self.session.query(User).filter_by(ID=user_id).first()
         if user:
             self.session.delete(user)
             self.session.commit()
-            return user
         return None
 
     def update(self, user_id, updated_data):
@@ -46,7 +47,8 @@ class UserRepository:
 
     def find_by_email(self, email):
         # Retorna um usuário pelo email.
-        return self.session.query(User).filter_by(Email=email).first()
+        usuario = self.session.query(User).filter_by(Email=email).first()
+        return usuario
 
     # def find_by_cpf(self, cpf):
     #     # Retorna um usuário pelo CPF.

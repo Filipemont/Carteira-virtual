@@ -197,15 +197,30 @@ def atualizar_usuario(id):
     }
 })
 def deletar_usuario(id):
+    print(id)
     usuario = __user_service.findById(id)
     if not usuario:
         return jsonify({"erro": "Usuário não encontrado"}), 400
     __user_service.delete(id)
-    return jsonify({"sucesso": f"Usuário com ID: {id} deletado"}), 204
+    return f"Usuário com ID: {id} deletado", 204
 
 
 @usuario_blueprint.route('/login', methods=['POST'])
 @swag_from({
+    'parameters': [
+        {
+            'name': 'body',
+            'in': 'body',
+            'required': True,
+            'schema': {
+                'type': 'object',
+                'properties': {
+                    'email': {'type': 'string'},
+                    'senha': {'type': 'string'},
+                }
+            }
+        }
+    ],
     'responses': {
         204: {
             'description': 'Usuário logado com sucesso',
@@ -227,7 +242,10 @@ def deletar_usuario(id):
         }
     }
 })
-def logar_usuario(email, senha):
+def logar_usuario():
+    dados = request.get_json()
+    email = dados.get('email')
+    senha = dados.get('senha')
     if not __user_service.login(email, senha) :
         return jsonify({"erro": "Usuário não encontrado"}), 400
     return jsonify({"sucesso": f"Usuário com ID: {id} logado"}), 200

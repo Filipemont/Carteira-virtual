@@ -13,7 +13,8 @@ class EntradaRepository:
         self.session.commit()
 
     def get_by_id(self, entrada_id):
-        return self.session.query(Entrada).filter_by(ID=entrada_id).first()
+        entrada = self.session.query(Entrada).filter_by(ID=entrada_id).first()
+        return entrada.to_dict()
 
     def get_all(self):
         entradas = self.session.query(Entrada).all()

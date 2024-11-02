@@ -11,6 +11,7 @@ class SaidaRepository:
                           ID_Tipo_Saida=id_tipo_saida, ID_Usuario=id_usuario)
         self.session.add(saida)
         self.session.commit()
+        
     def get_by_id(self, saida_id):
         saida = self.session.query(Saida).filter_by(ID=saida_id).first()
         return saida.to_dict()
